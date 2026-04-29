@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GMoney66 | Gaming YouTube Channel</title>
+  <meta name="description" content="GMoney66 — Gaming videos, reviews, and commentary. Subscribe on YouTube for the latest content." />
+  <meta property="og:title" content="GMoney66 | Gaming YouTube Channel" />
+  <meta property="og:description" content="Gaming videos, reviews, and commentary." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:   #16a34a;
+      --green-light: #22c55e;
+      --green-dim:  #dcfce7;
+      --dark:    #0f172a;
+      --mid:     #334155;
+      --muted:   #64748b;
+      --border:  #e2e8f0;
+      --bg:      #ffffff;
+      --bg2:     #f8fafc;
+      --bg3:     #f1f5f9;
+      --radius:  12px;
+      --shadow:  0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+
+    .nav-logo span { color: var(--dark); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .nav-cta {
+      background: var(--green);
+      color: #fff !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover { background: #15803d; transform: translateY(-1px); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1.5rem 1rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      padding: 0.75rem 0;
+      font-weight: 500;
+      color: var(--mid);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--green); }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #f8fafc 100%);
+      padding: 6rem 1.5rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--green-dim);
+      color: var(--green);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero-badge::before { content: '🎮'; }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 .accent { color: var(--green); }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(22,163,74,0.3);
+    }
+
+    .btn-primary:hover {
+      background: #15803d;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(22,163,74,0.35);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff;
+      color: var(--dark);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 100px;
+      border: 2px solid var(--border);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Section shared ── */
+    section { padding: 5rem 1.5rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    /* ── About ── */
+    #about { background: var(--bg2); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image-wrap { position: relative; }
+
+    .about-image-placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--green-dim), #d1fae5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 5rem;
+      box-shadow: var(--shadow-lg);
+      border: 3px solid rgba(34,197,94,0.15);
+    }
+
+    .about-image-placeholder p {
+      font-size: 0.875rem;
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 12px;
+      padding: 0.75rem 1.25rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow);
+    }
+
+    .about-content .section-sub { max-width: 100%; margin-bottom: 2rem; }
+
+    .about-features { display: flex; flex-direction: column; gap: 1rem; }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.875rem;
+    }
+
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--green-dim);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-text strong {
+      display: block;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .feature-text span { font-size: 0.9rem; color: var(--muted); }
+
+    /* ── Videos ── */
+    #videos { background: var(--bg); }
+
+    .videos-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .video-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .video-embed {
+      position: relative;
+      padding-top: 56.25%;
+      background: #000;
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-info { padding: 1rem; }
+
+    .video-info h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.35rem;
+      line-height: 1.4;
+    }
+
+    .video-meta { font-size: 0.8rem; color: var(--muted); }
+
+    .channel-link-wrap { text-align: center; margin-top: 3rem; }
+
+    /* ── Email Signup ── */
+    #signup {
+      background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+      color: #fff;
+    }
+
+    #signup .section-tag { color: var(--green-light); }
+    #signup .section-title { color: #fff; }
+    #signup .section-sub { color: #94a3b8; }
+
+    .signup-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .signup-perks { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+
+    .perk {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    .perk::before {
+      content: '✓';
+      width: 22px;
+      height: 22px;
+      background: rgba(34,197,94,0.2);
+      color: var(--green-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .signup-form-wrap {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2.5rem;
+    }
+
+    .signup-form-wrap h3 { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .signup-form-wrap p { font-size: 0.9rem; color: #94a3b8; margin-bottom: 1.75rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem; }
+
+    .form-group input {
+      padding: 0.875rem 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input::placeholder { color: #64748b; }
+    .form-group input:focus { border-color: var(--green-light); background: rgba(255,255,255,0.12); }
+
+    .btn-submit {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-submit:hover { background: #15803d; transform: translateY(-1px); }
+
+    .form-note { text-align: center; font-size: 0.78rem; color: #475569; margin-top: 0.75rem; }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 1rem;
+      color: var(--green-light);
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      color: #64748b;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.875rem;
+      border-top: 1px solid #1e293b;
+    }
+
+    footer a { color: var(--green-light); }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-image-wrap { max-width: 360px; margin: 0 auto; }
+      .videos-grid { grid-template-columns: repeat(2, 1fr); }
+      .signup-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 3.5rem 1rem; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding: 4rem 1rem 3.5rem; }
+      .hero-stats { gap: 1.5rem; }
+      .videos-grid { grid-template-columns: 1fr; }
+      .videos-header { flex-direction: column; align-items: flex-start; }
+      .signup-form-wrap { padding: 1.75rem 1.25rem; }
+      .about-badge { bottom: -12px; right: -4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">G<span>Money</span>66</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#signup">Newsletter</a></li>
+      </ul>
+      <a class="nav-cta nav-links" href="https://www.youtube.com/@GMoney66videos?sub_confirmation=1" target="_blank" rel="noopener">
+        ▶ Subscribe
+      </a>
+      <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#videos" onclick="toggleMenu()">Videos</a>
+    <a href="#signup" onclick="toggleMenu()">Newsletter</a>
+    <a href="https://www.youtube.com/@GMoney66videos?sub_confirmation=1" target="_blank" rel="noopener">▶ Subscribe on YouTube</a>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-badge">Gaming Channel</div>
+    <h1>Gaming Content<br>by <span class="accent">GMoney66</span></h1>
+    <p>Let's plays, reviews, and gaming commentary — drop in, enjoy the content, and join the community.</p>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="https://www.youtube.com/@GMoney66videos?sub_confirmation=1" target="_blank" rel="noopener">
+        ▶ Subscribe on YouTube
+      </a>
+      <a class="btn-secondary" href="#videos">Watch Latest Videos</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">🎮</div>
+        <div class="stat-label">Gaming</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">🎬</div>
+        <div class="stat-label">Let's Plays</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">⭐</div>
+        <div class="stat-label">Reviews</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">🔔</div>
+        <div class="stat-label">New Videos Weekly</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrap">
+          <div class="about-image-placeholder">
+            🎮
+            <p>GMoney66</p>
+          </div>
+          <div class="about-badge">🎬 New vids weekly</div>
+        </div>
+        <div class="about-content">
+          <div class="section-tag">About the Channel</div>
+          <h2 class="section-title">Hey, I'm GMoney66!</h2>
+          <p class="section-sub">
+            Welcome to my channel — I make gaming content that's all about having fun, exploring games, and sharing honest takes. Whether you're here for the let's plays, game reviews, or just to hang out, you're in the right place.
+          </p>
+          <div class="about-features">
+            <div class="feature-item">
+              <div class="feature-icon">🕹️</div>
+              <div class="feature-text">
+                <strong>Let's Plays</strong>
+                <span>Full playthroughs and blind runs — come along for the ride.</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">⭐</div>
+              <div class="feature-text">
+                <strong>Game Reviews</strong>
+                <span>Honest, no-fluff reviews to help you decide what's worth your time.</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🗣️</div>
+              <div class="feature-text">
+                <strong>Commentary & Discussion</strong>
+                <span>Hot takes, gaming news, and community conversations.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VIDEOS ── -->
+  <section id="videos">
+    <div class="container">
+      <div class="videos-header">
+        <div>
+          <div class="section-tag">Latest Content</div>
+          <h2 class="section-title">Watch My Videos</h2>
+        </div>
+        <a class="btn-secondary" href="https://www.youtube.com/@GMoney66videos" target="_blank" rel="noopener">
+          View All →
+        </a>
+      </div>
+
+      <div class="videos-grid">
+
+        <!--
+          HOW TO UPDATE YOUR VIDEOS:
+          1. Go to a YouTube video on your channel
+          2. Copy the ID from the URL: youtube.com/watch?v=COPY_THIS_PART
+          3. Replace VIDEO_ID_1, VIDEO_ID_2, VIDEO_ID_3 below
+          4. Update the title and date text too
+        -->
+
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/dvm55a6iJEE"
+              title="Kitty loves the Jaffas"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="video-info">
+            <h3>Kitty loves the Jaffas - Trail the kitty into the ditch</h3>
+            <div class="video-meta">GMoney66 - Apr 2026</div>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/OWMIeFmP0FM"
+              title="Major Jackpot Grand Star"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="video-info">
+            <h3>Major Jackpot Grand Star</h3>
+            <div class="video-meta">GMoney66 - Apr 2026</div>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/HW3PdpBN_5E"
+              title="BVRT Almost binned it crossing the cattle grate"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="video-info">
+            <h3>BVRT Almost binned it crossing the cattle grate</h3>
+            <div class="video-meta">GMoney66 - Apr 2026</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="channel-link-wrap">
+        <a class="btn-primary" href="https://www.youtube.com/@GMoney66videos" target="_blank" rel="noopener">
+          ▶ See All Videos on YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EMAIL SIGNUP ── -->
+  <section id="signup">
+    <div class="container">
+      <div class="signup-inner">
+        <div>
+          <div class="section-tag">Stay in the Loop</div>
+          <h2 class="section-title">Never Miss a Drop</h2>
+          <p class="section-sub">
+            Get notified when new videos drop, plus exclusive gaming tips and behind-the-scenes updates — straight to your inbox.
+          </p>
+          <div class="signup-perks">
+            <div class="perk">New video alerts before anyone else</div>
+            <div class="perk">Exclusive gaming tips and recommendations</div>
+            <div class="perk">Behind-the-scenes channel updates</div>
+            <div class="perk">Zero spam — unsubscribe any time</div>
+          </div>
+        </div>
+
+        <div class="signup-form-wrap">
+          <h3>Join the Community</h3>
+          <p>Free. No spam. Ever.</p>
+
+          <!--
+            EMAIL FORM SETUP (free via Formspree):
+            1. Go to https://formspree.io and sign up
+            2. Create a new form
+            3. Copy your endpoint URL (looks like https://formspree.io/f/abc123)
+            4. Replace YOUR_FORMSPREE_ID in the action attribute below
+          -->
+          <form
+            id="emailForm"
+            action="https://formspree.io/f/mbdqnqzw"
+            method="POST"
+            onsubmit="handleSubmit(event)">
+
+            <div class="form-group">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your name"
+                required
+                autocomplete="name" />
+              <input
+                type="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+                autocomplete="email" />
+            </div>
+
+            <button type="submit" class="btn-submit">🔔 Subscribe — It's Free</button>
+            <p class="form-note">No spam ever. Unsubscribe anytime.</p>
+          </form>
+
+          <div class="form-success" id="formSuccess">
+            🎮 You're in! Watch your inbox for new drops.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>
+      © 2026 GMoney66 ·
+      <a href="https://www.youtube.com/@GMoney66videos" target="_blank" rel="noopener">YouTube</a>
+      · Built with ❤️ and deployed free on GitHub Pages
+    </p>
+  </footer>
+
+  <!-- ── JS ── -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+    }
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('mobileMenu').classList.remove('open');
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const id = this.getAttribute('href');
+        if (id === '#') return;
+        const el = document.querySelector(id);
+        if (el) {
+          e.preventDefault();
+          const top = el.getBoundingClientRect().top + window.scrollY - 72;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          alert('Hmm, something went wrong. Please try again!');
+        }
+      } catch (err) {
+        alert('Network error — please check your connection and try again.');
+      }
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.video-card, .feature-item, .perk').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
